@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Check if on ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround);
-
+   
         MyInput();
         SpeedControl();
 
@@ -48,12 +48,13 @@ public class PlayerMovement : MonoBehaviour
             rb.linearDamping = groundDrag;
         } else
         {
-            rb.linearDamping = 0.1f;
+            rb.linearDamping = 0;
         }
     }
 
     private void FixedUpdate()
     {
+
         MovePlayer();
     }
 
