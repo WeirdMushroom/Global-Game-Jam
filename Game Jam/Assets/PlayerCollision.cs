@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public BossFightStart bossFightStartScript;
+    public BossScript bossScript;
     public Rigidbody rb;
-    public PlayerMovement movementScript;
-    Vector3 spawnPoint;
+    public Vector3 spawnPoint;
     private void Awake()
     {
         spawnPoint = new Vector3(0, 30, -26);
@@ -15,6 +16,20 @@ public class PlayerCollision : MonoBehaviour
         {
             transform.position = spawnPoint;
             rb.linearVelocity = Vector3.zero;
+            if (bossFightStartScript.bossFightStarted)
+            {
+                bossScript.health = 100;
+            }
         }
     }
+    public void die()
+    {
+        transform.position = spawnPoint;
+        rb.linearVelocity = Vector3.zero;
+        if (bossFightStartScript.bossFightStarted)
+        {
+            bossScript.health = 100;
+        }
+    }
+
 }
